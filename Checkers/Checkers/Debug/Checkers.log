@@ -1,0 +1,8 @@
+﻿  main.cpp
+  graphic.cpp
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers\checkers\graphic.cpp(70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Board.cpp
+  AI.cpp
+  Generating Code...
+graphic.obj : error LNK2001: unresolved external symbol "public: static class sf::RenderStates const sf::RenderStates::Default" (?Default@RenderStates@sf@@2V12@B)
+D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers\Debug\Checkers.exe : fatal error LNK1120: 1 unresolved externals

@@ -1,0 +1,8 @@
+﻿  main.cpp
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.01\checkers_v1.01\graphic.h(63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  graphic.cpp
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.01\checkers_v1.01\graphic.h(63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Board.cpp
+  AI.cpp
+  Generating Code...
+  Checkers_v1.01.vcxproj -> D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.01\Debug\Checkers_v1.01.exe
