@@ -27,7 +27,7 @@ public:
 	void movements();
 
 	// Tworzenie wektora ruchów z biciem
-	void movementWithBeatings(int, int, int);
+	void movementWithBeatings(int, int, int, vector <Coord> &);
 
 	// Tworzenie wektora ruchów bez bicia
 	void movementWithoutBeatings(int, int, int);
@@ -48,7 +48,7 @@ public:
 	//Board board;
 private:
 	inline void movementsWithBeatingsFromTo(int i, int j, int x, int y, int step);
-	inline void movementsWithBeatingsFromToQueen(int i, int j, int x, int y, int m, int n, int step);
+	inline void movementsWithBeatingsFromToQueen(int i, int j, int x, int y, int m, int n, int step, vector <Coord> );
 
 	// Przechowuje ocene sytuacji 
 	int value;

@@ -27,7 +27,7 @@ AI::AI() {
 void AI::movements() {
 	for (size_t i = 0; i < 8; i++) {
 		for (size_t j = 0; j < 8; j++) {
-			movementWithBeatings(i, j, 0);
+			movementWithBeatings(i, j, 0, vector <Coord>());
 		}
 	}
 	if (_coord.size() == 0) {
@@ -40,7 +40,7 @@ void AI::movements() {
 }
 
 
-void AI::movementWithBeatings(int i, int j, int step = 0) {
+void AI::movementWithBeatings(int i, int j, int step = 0, vector <Coord> & tempCoord = vector <Coord>()) {
 	//Done 100%
 	int counter = 0;
 	if (Board::board[i][j] == player) {
@@ -119,38 +119,118 @@ void AI::movementWithBeatings(int i, int j, int step = 0) {
 	}
 	//TODO
 	if (Board::board[i][j] == player * 2) {
-		for (int k = 1, l = 1; i + k < 6 && j + l < 6; k++, l++) {
+		for (int k = 1, l = 1; i + k < 7 && j + l < 7; k++, l++) {
+
+			// Sprawdzanie czy pole jest puste
 			if (Board::board[i + k][j + l] == EMPTY) {
-				cout << "Damka1 " << i + k << " " << j + l << endl;
+				cout << "Damka: Pole " << i + k << " " << j + l << " jest puste" << endl;
 				continue;
 			}
 
+			// Sprawdzenie czy na nastepnym polu stoi pionek przeciwnika
 			if ((Board::board[i + k][j + l] == player * -1) || (Board::board[i + k][j + l] == player * -2)) {
 
+				//Zapamiêtanie pozycji wroga
 				int posEx = i + k;
 				int posEy = j + l;
-				int steptemp = step;
+
+				// Sprawdzenie ile kolejnych pól jest pustych
 				for (int m = 1, n = 1; i + k + m < 8 && j + l + n < 8; m++, n++) {
-					cout << " >> " << endl;
+					cout << " ++ " << endl;
 					if (Board::board[i + k + m][j + l + n] == EMPTY) {
-						step--;
-						cout << "Damka2 " << i + k + m << " " << j + l + n << endl;
-						if (counter == 0) {							
-							movementsWithBeatingsFromToQueen(i, j, i + k + m, j + l + n, posEx, posEy, step);
-						}
-						else {
-							cout << "TFW" << endl;
-							vector <Coord> temp;
-							temp.assign(_coord[_coord.size() - 1].begin(), _coord[_coord.size() - 1].begin() + step);
-							_coord.push_back(temp);
-							movementsWithBeatingsFromToQueen(i, j, i + k + m, j + l + n, posEx, posEy, step);
-						}
+						movementsWithBeatingsFromToQueen(i, j, (i + k + m), (j + l + n), posEx, posEy, step, tempCoord);
+					}
+					else {
+						break;
+					}
+
+				}
+				break;
+
+			}
+		}
+		for (int k = 1, l = 1; i - k > 0 && j + l < 7; k++, l++) {
+
+			// Sprawdzanie czy pole jest puste
+			if (Board::board[i - k][j + l] == EMPTY) {
+				cout << "Damka: Pole " << i - k << " " << j + l << " jest puste" << endl;
+				continue;
+			}
+
+			// Sprawdzenie czy na nastepnym polu stoi pionek przeciwnika
+			if ((Board::board[i - k][j + l] == player * -1) || (Board::board[i - k][j + l] == player * -2)) {
+
+				//Zapamiêtanie pozycji wroga
+				int posEx = i - k;
+				int posEy = j + l;
+
+				// Sprawdzenie ile kolejnych pól jest pustych
+				for (int m = 1, n = 1; i - k - m >= 0 && j + l + n < 8; m++, n++) {
+					cout << " -+ " << endl;
+					if (Board::board[i - k - m][j + l + n] == EMPTY) {
+						movementsWithBeatingsFromToQueen(i, j, (i - k - m), (j + l + n), posEx, posEy, step, tempCoord);
+					}
+					else {
+						break;
 					}
 				}
-				step = steptemp;
 				break;
 			}
-			else {
+		}
+		for (int k = 1, l = 1; i + k < 7 && j - l > 0; k++, l++) {
+
+			// Sprawdzanie czy pole jest puste
+			if (Board::board[i + k][j - l] == EMPTY) {
+				cout << "Damka: Pole " << i + k << " " << j - l << " jest puste" << endl;
+				continue;
+			}
+
+			// Sprawdzenie czy na nastepnym polu stoi pionek przeciwnika
+			if ((Board::board[i + k][j - l] == player * -1) || (Board::board[i + k][j - l] == player * -2)) {
+
+				//Zapamiêtanie pozycji wroga
+				int posEx = i + k;
+				int posEy = j - l;
+
+				// Sprawdzenie ile kolejnych pól jest pustych
+				for (int m = 1, n = 1; i + k + m < 8 && j - l - n >= 0; m++, n++) {
+					cout << " ++ " << endl;
+					if (Board::board[i + k + m][j - l - n] == EMPTY) {
+						movementsWithBeatingsFromToQueen(i, j, (i + k + m), (j - l - n), posEx, posEy, step, tempCoord);
+					}
+					else {
+						break;
+					}
+
+				}
+				break;
+			}
+		}
+		for (int k = 1, l = 1; i - k > 0 && j - l > 0; k++, l++) {
+
+			// Sprawdzanie czy pole jest puste
+			if (Board::board[i - k][j - l] == EMPTY) {
+				cout << "Damka: Pole " << i - k << " " << j - l << " jest puste" << endl;
+				continue;
+			}
+
+			// Sprawdzenie czy na nastepnym polu stoi pionek przeciwnika
+			if ((Board::board[i - k][j - l] == player * -1) || (Board::board[i - k][j - l] == player * -2)) {
+
+				//Zapamiêtanie pozycji wroga
+				int posEx = i - k;
+				int posEy = j - l;
+
+				// Sprawdzenie ile kolejnych pól jest pustych
+				for (int m = 1, n = 1; i - k - m >= 0 && j - l - n >= 0; m++, n++) {
+					cout << " -- " << endl;
+					if (Board::board[i - k - m][j - l - n] == EMPTY) {
+						movementsWithBeatingsFromToQueen(i, j, (i - k - m), (j - l - n), posEx, posEy, step, tempCoord);
+					}
+					else {
+						break;
+					}
+				}
 				break;
 			}
 		}
@@ -301,21 +381,32 @@ inline void AI::movementsWithBeatingsFromTo(int i, int j, int x, int y, int step
 	}
 
 }
-inline void AI::movementsWithBeatingsFromToQueen(int i, int j, int x, int y, int m, int n, int step) {
+inline void AI::movementsWithBeatingsFromToQueen(int i, int j, int x, int y, int m, int n, int step, vector <Coord>  tempCoord) {
 	if (step == 0) {
 
 		// Tworzenie nowego wêz³a
-		vector<Coord> temp2;
-		temp2.push_back(Coord(i, j, x, y));
-		_coord.push_back(temp2);
+		//vector<Coord> temp2;
+		//temp2.push_back(Coord(i, j, x, y));
+		//_coord.push_back(temp2);
 
 		//Przemieszczanie pionka
 		Board::board[x][y] = Board::board[i][j];
 		FIELD temp = Board::board[m][n];
 		Board::board[m][n] = EMPTY;
 		Board::board[i][j] = EMPTY;
+
 		// Rekurencyjnie sprawdzanie czy posiada jeszcze jakieœ bicia.
-		movementWithBeatings(x, y, step + 1);
+		// Jeœli nie, tworzenie nowego wêz³a.
+		tempCoord.push_back(Coord(i, j, x, y));
+		if (Board::checkBeating(x, y)) {
+			cout << "STEP " << step << " Damka ma kolejne bicie" << endl;
+			movementWithBeatings(x, y, step + 1, tempCoord);
+		}
+		else {
+			cout << "STEP " << step << " Damka nie ma juz bicia" << endl;
+			vector<Coord> temp(tempCoord);
+			_coord.push_back(temp);
+		}
 
 		//Powrót pionka na w³aœciwe miejsce
 		Board::board[i][j] = Board::board[x][y];
@@ -324,7 +415,7 @@ inline void AI::movementsWithBeatingsFromToQueen(int i, int j, int x, int y, int
 
 	}
 	else {
-		_coord[_coord.size() - 1].push_back(Coord(i, j, x, y));
+		//_coord[_coord.size() - 1].push_back(Coord(i, j, x, y));
 
 		//Przemieszczanie pionka
 		Board::board[x][y] = Board::board[i][j];
@@ -333,11 +424,18 @@ inline void AI::movementsWithBeatingsFromToQueen(int i, int j, int x, int y, int
 		Board::board[i][j] = EMPTY;
 
 		// Rekurencyjnie sprawdzanie czy posiada jeszcze jakieœ bicia.
-		movementWithBeatings(x, y, step + 1);
-
+		tempCoord.push_back(Coord(i, j, x, y));
+		if (Board::checkBeating(x, y)) {
+			movementWithBeatings(x, y, step + 1, tempCoord);
+		}
+		else {
+			vector<Coord> temp(tempCoord);
+			_coord.push_back(temp);
+		}
 		//Powrót pionka na w³aœciwe miejsce
 		Board::board[i][j] = Board::board[x][y];
 		Board::board[x][y] = EMPTY;
 		Board::board[m][n] = temp;
+
 	}
 }
