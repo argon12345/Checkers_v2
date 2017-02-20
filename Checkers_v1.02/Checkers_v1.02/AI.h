@@ -6,9 +6,9 @@
 
 #define CAVITY 4
 
-struct Coord{
+struct Coord {
 	int x, y, x_, y_;
-	Coord(int x, int y, int x_, int y_){
+	Coord(int x, int y, int x_, int y_) {
 		this->x = x;
 		this->y = y;
 		this->x_ = x_;
@@ -22,6 +22,9 @@ public:
 	AI(Coord, int, Board);
 	AI(Board);
 	AI();
+
+	// Zwraca najlepszy mo¿liwy ruch
+	vector <Coord> getSolution(int);
 
 	// Tworzenie wektora mo¿liwych ruchów
 	void movements();
@@ -44,11 +47,11 @@ public:
 	// Wyœwietlenie mo¿liwych aktualnie ruchów
 	void displayCoord();
 
-	// Plansza
-	//Board board;
+	int treeMinMax(vector <Coord>, int);
 private:
-	inline void movementsWithBeatingsFromTo(int i, int j, int x, int y, int step);
-	inline void movementsWithBeatingsFromToQueen(int i, int j, int x, int y, int m, int n, int step, vector <Coord> );
+	inline void movementsWithBeatingsFromTo(int i, int j, int x, int y, int step, vector <Coord>);
+	inline void movementsWithBeatingsFromToQueen(int i, int j, int x, int y, int m, int n, int step, vector <Coord>);
+	
 
 	// Przechowuje ocene sytuacji 
 	int value;
@@ -60,7 +63,7 @@ private:
 
 	//
 	vector<int> nodeValue;
-	
+
 	//
 	vector<vector<Coord> > _coord;
 

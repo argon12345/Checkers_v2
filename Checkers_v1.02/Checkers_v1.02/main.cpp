@@ -3,6 +3,8 @@
 
 using namespace std;
 
+
+
 void unitTest(){
 	Board game;
 	game.Display();
@@ -43,6 +45,10 @@ int main(int argc, char* argv){
 	Graphic graphic = Graphic();
 	graphic.run();
 	    
+	
+	
+
+
 	//system("PAUSE");
 
 	//return 0;

@@ -25,74 +25,74 @@ bool Board::checkBeating(int x, int y) {
 	FIELD enemy = (board[x][y] > 0 ? WHITE : BLACK);
 	if (abs(board[x][y]) == 1) {
 		if (x < 6 && y < 6 && ((board[x + 1][y + 1] == enemy) || (board[x + 1][y + 1] == 2 * enemy)) && board[x + 2][y + 2] == EMPTY) {
-			cout << "x = " << x << " y = " << y << "Bicie nr:  1" << endl;
+			//cout << "x = " << x << " y = " << y << "Bicie nr:  1" << endl;
 			return true;
 		}
 		if (x < 6 && y > 1 && ((board[x + 1][y - 1] == enemy) || (board[x + 1][y - 1] == 2 * enemy)) && board[x + 2][y - 2] == EMPTY) {
-			cout << "x = " << x << " y = " << y << "Bicie nr:  2" << endl;
+			//cout << "x = " << x << " y = " << y << "Bicie nr:  2" << endl;
 			return true;
 		}
 		if (x > 1 && y > 1 && ((board[x - 1][y - 1] == enemy) || (board[x - 1][y - 1] == 2 * enemy)) && board[x - 2][y - 2] == EMPTY) {
-			cout << "x = " << x << " y = " << y << "Bicie nr:  3" << endl;
+			//cout << "x = " << x << " y = " << y << "Bicie nr:  3" << endl;
 			return true;
 		}
 		if (x > 1 && y < 6 && ((board[x - 1][y + 1] == enemy) || (board[x - 1][y + 1] == 2 * enemy)) && board[x - 2][y + 2] == EMPTY) {
-			cout << "x = " << x << " y = " << y << "Bicie nr: 4 " << endl;
+			//cout << "x = " << x << " y = " << y << "Bicie nr: 4 " << endl;
 			return true;
 		}
 	}
 	else if (abs(board[x][y]) == 2) {
 		for (int i = x + 1, j = y + 1; (i <= 6) && (j <= 6); i++, j++) {
 			if ((board[i][j] == enemy || board[i][j] == 2 * enemy) && board[i + 1][j + 1] == EMPTY) {
-				cout << "x = " << x << " y = " << y << "Bicie nr:  5" << endl;
+				//cout << "x = " << x << " y = " << y << "Bicie nr:  5" << endl;
 				return true;
 			}
-			else if (board[i][j] == EMPTY){
+			else if (board[i][j] == EMPTY) {
 				continue;
 			}
-			else{
+			else {
 				break;
 			}
 		}
 		for (int i = x - 1, j = y + 1; (i >= 1) && (j <= 6); i--, j++) {
 			if ((board[i][j] == enemy || board[i][j] == 2 * enemy) && board[i - 1][j + 1] == EMPTY) {
-				cout << "x = " << x << " y = " << y << "Bicie nr:  6" << endl;
+				//cout << "x = " << x << " y = " << y << "Bicie nr:  6" << endl;
 				return true;
 			}
-			else if (board[i][j] == EMPTY){
+			else if (board[i][j] == EMPTY) {
 				continue;
 			}
-			else{
+			else {
 				break;
 			}
 		}
 		for (int i = x + 1, j = y - 1; (i <= 6) && (j >= 1); i++, j--) {
 			if ((board[i][j] == enemy || board[i][j] == 2 * enemy) && board[i + 1][j - 1] == EMPTY) {
-				cout << "x = " << x << " y = " << y << "Bicie nr:  7" << endl;
+				//cout << "x = " << x << " y = " << y << "Bicie nr:  7" << endl;
 				return true;
 			}
-			else if (board[i][j] == EMPTY){
+			else if (board[i][j] == EMPTY) {
 				continue;
 			}
-			else{
+			else {
 				break;
 			}
 		}
 		for (int i = x - 1, j = y - 1; (i >= 1) && (j >= 1); i--, j--) {
 			if ((board[i][j] == enemy || board[i][j] == 2 * enemy) && board[i - 1][j - 1] == EMPTY) {
-				cout << "x = " << x << " y = " << y << "Bicie nr:  8" << endl;
+				//cout << "x = " << x << " y = " << y << "Bicie nr:  8" << endl;
 				return true;
 			}
-			else if (board[i][j] == EMPTY){
+			else if (board[i][j] == EMPTY) {
 				continue;
 			}
-			else{
+			else {
 				break;
 			}
 		}
 	}
 	return false;
-} // Done 100%
+} 
 bool Board::checkMoveTo(int x, int y, int x_, int y_) {
 	FIELD var = board[x][y];
 	if (x >= 0 && y >= 0 && x_ >= 0 && y_ >= 0 && x < 8 && y < 8 && x_ < 8 && y_ < 8 && x != x_ && y != y_ && (abs(x - x_) == abs(y - y_))) {
@@ -129,10 +129,10 @@ bool Board::checkMoveTo(int x, int y, int x_, int y_) {
 							return false;
 						}
 					}
-					if (board[x_][y_] == EMPTY){
+					if (board[x_][y_] == EMPTY) {
 						return true;
 					}
-					else{
+					else {
 						return false;
 					}
 				}
@@ -154,10 +154,10 @@ bool Board::checkMoveTo(int x, int y, int x_, int y_) {
 							return false;
 						}
 					}
-					if (board[x_][y_] == EMPTY){
+					if (board[x_][y_] == EMPTY) {
 						return true;
 					}
-					else{
+					else {
 						return false;
 					}
 				}
@@ -181,10 +181,10 @@ bool Board::checkMoveTo(int x, int y, int x_, int y_) {
 							return false;
 						}
 					}
-					if (board[x_][y_] == EMPTY){
+					if (board[x_][y_] == EMPTY) {
 						return true;
 					}
-					else{
+					else {
 						return false;
 					}
 				}
@@ -206,10 +206,10 @@ bool Board::checkMoveTo(int x, int y, int x_, int y_) {
 							return false;
 						}
 					}
-					if (board[x_][y_] == EMPTY){
+					if (board[x_][y_] == EMPTY) {
 						return true;
 					}
-					else{
+					else {
 						return false;
 					}
 				}
@@ -235,10 +235,10 @@ bool Board::checkMoveTo(int x, int y, int x_, int y_) {
 							return false;
 						}
 					}
-					if (board[x_][y_] == EMPTY){
+					if (board[x_][y_] == EMPTY) {
 						return true;
 					}
-					else{
+					else {
 						return false;
 					}
 				}
@@ -260,10 +260,10 @@ bool Board::checkMoveTo(int x, int y, int x_, int y_) {
 							return false;
 						}
 					}
-					if (board[x_][y_] == EMPTY){
+					if (board[x_][y_] == EMPTY) {
 						return true;
 					}
-					else{
+					else {
 						return false;
 					}
 				}
@@ -287,10 +287,10 @@ bool Board::checkMoveTo(int x, int y, int x_, int y_) {
 							return false;
 						}
 					}
-					if (board[x_][y_] == EMPTY){
+					if (board[x_][y_] == EMPTY) {
 						return true;
 					}
-					else{
+					else {
 						return false;
 					}
 				}
@@ -312,10 +312,10 @@ bool Board::checkMoveTo(int x, int y, int x_, int y_) {
 							return false;
 						}
 					}
-					if (board[x_][y_] == EMPTY){
+					if (board[x_][y_] == EMPTY) {
 						return true;
 					}
-					else{
+					else {
 						return false;
 					}
 				}
@@ -325,38 +325,39 @@ bool Board::checkMoveTo(int x, int y, int x_, int y_) {
 	return false;
 }
 bool Board::moveTo(int x, int y, int x_, int y_) {
+	//cout << "MoveTo: " << x << " " << y << " to " << x_ << " " << y_ << endl;
 	PLAYER player;
 	(board[x][y] < 0) ? player = P_WHITE : player = P_BLACK;
 	if (checkMoveTo(x, y, x_, y_)) {
-		cout << "moveTo - etap 1" << endl;
+		//cout << "moveTo - etap 1" << endl;
 		if ((abs(board[x][y]) == 1) && (abs(x - x_) == 1) && !checkBeatings(player)) {
-			cout << "moveTo - etap 2.1 " << endl;
+			//cout << "moveTo - etap 2.1 " << endl;
 			board[x_][y_] = board[x][y];
 			board[x][y] = EMPTY;
 			if ((y_ == 7 && player == -1) || (y_ == 0 && player == 1)) {
-				cout << "moveTo - etap 2.1.1" << endl;
+				//cout << "moveTo - etap 2.1.1" << endl;
 				board[x_][y_] = (FIELD)(player * 2);
 			}
 			return true;
 		}
 		if ((abs(x - x_) == 2) && abs(board[x][y]) == 1) {
-			cout << "moveTo - etap 2.2 " << endl;
+			//cout << "moveTo - etap 2.2 " << endl;
 			board[x_][y_] = board[x][y];
 			board[x][y] = EMPTY;
 			board[(x + x_) / 2][(y + y_) / 2] = EMPTY;
 			if ((y_ == 7 && player == -1) || (y_ == 0 && player == 1)) {
-				cout << "moveTo - etap 2.2.1 " << endl;
+				//cout << "moveTo - etap 2.2.1 " << endl;
 				board[x_][y_] = (FIELD)(player * 2);
 			}
 			return true;
 		}
 		if (abs(board[x][y]) == 2 && (!checkBeatings(player))) {
-			cout << "moveTo - etap 2.3.0 " << endl;
+			//cout << "moveTo - etap 2.3.0 " << endl;
 			board[x_][y_] = board[x][y];
 			if (x < x_) {
 				if (y < y_) {
 					//++
-					cout << "moveTo - etap 2.3 " << endl;
+					//cout << "moveTo - etap 2.3 " << endl;
 					for (; x < x_ && y < y_; x++, y++) {
 						board[x][y] = EMPTY;
 					}
@@ -364,7 +365,7 @@ bool Board::moveTo(int x, int y, int x_, int y_) {
 				}
 				else {
 					//+-
-					cout << "moveTo - etap 2.4 " << endl;
+					//cout << "moveTo - etap 2.4 " << endl;
 					for (; x < x_ && y > y_; x++, y--) {
 						board[x][y] = EMPTY;
 					}
@@ -374,7 +375,7 @@ bool Board::moveTo(int x, int y, int x_, int y_) {
 			else {
 				if (y < y_) {
 					//-+
-					cout << "moveTo - etap 2.5 " << endl;
+					//cout << "moveTo - etap 2.5 " << endl;
 					for (; x > x_ && y < y_; x--, y++) {
 						board[x][y] = EMPTY;
 					}
@@ -382,7 +383,7 @@ bool Board::moveTo(int x, int y, int x_, int y_) {
 				}
 				else {
 					//--
-					cout << "moveTo - etap 2.6 " << endl;
+					//cout << "moveTo - etap 2.6 " << endl;
 					for (; x > x_ && y > y_; x--, y--) {
 						board[x][y] = EMPTY;
 					}
@@ -391,12 +392,12 @@ bool Board::moveTo(int x, int y, int x_, int y_) {
 			}
 		}
 		if (abs(board[x][y]) == 2 && checkBeatings(player)) {
-			cout << "Damka ma bicie " << endl;
+			//cout << "Damka ma bicie " << endl;
 			if (x < x_) {
 				if (y < y_) {
 					//++
-					for (int i = x + 1, j = y + 1; i < x_ && j < y_; i++, j++){
-						if (board[i][j] != EMPTY){
+					for (int i = x + 1, j = y + 1; i < x_ && j < y_; i++, j++) {
+						if (board[i][j] != EMPTY) {
 							board[i][j] = EMPTY;
 							board[x_][y_] = board[x][y];
 							board[x][y] = EMPTY;
@@ -407,8 +408,8 @@ bool Board::moveTo(int x, int y, int x_, int y_) {
 				}
 				else {
 					//+-
-					for (int i = x + 1, j = y - 1; i < x_ && j > y_; i++, j--){
-						if (board[i][j] != EMPTY){
+					for (int i = x + 1, j = y - 1; i < x_ && j > y_; i++, j--) {
+						if (board[i][j] != EMPTY) {
 							board[i][j] = EMPTY;
 							board[x_][y_] = board[x][y];
 							board[x][y] = EMPTY;
@@ -421,8 +422,8 @@ bool Board::moveTo(int x, int y, int x_, int y_) {
 			else {
 				if (y < y_) {
 					//-+
-					for (int i = x - 1, j = y + 1; i > x_ && j < y_; i--, j++){
-						if (board[i][j] != EMPTY){
+					for (int i = x - 1, j = y + 1; i > x_ && j < y_; i--, j++) {
+						if (board[i][j] != EMPTY) {
 							board[i][j] = EMPTY;
 							board[x_][y_] = board[x][y];
 							board[x][y] = EMPTY;
@@ -433,8 +434,8 @@ bool Board::moveTo(int x, int y, int x_, int y_) {
 				}
 				else {
 					//--
-					for (int i = x - 1, j = y - 1; i > x_ && j > y_; i--, j--){
-						if (board[i][j] != EMPTY){
+					for (int i = x - 1, j = y - 1; i > x_ && j > y_; i--, j--) {
+						if (board[i][j] != EMPTY) {
 							board[i][j] = EMPTY;
 							board[x_][y_] = board[x][y];
 							board[x][y] = EMPTY;
@@ -446,23 +447,41 @@ bool Board::moveTo(int x, int y, int x_, int y_) {
 			}
 		}
 	}
-	cout << "Ruch niemozliwy do wykonania " << endl;
+	//Display();
+	//cout << "Ruch niemozliwy do wykonania " << x << " " << y << " to "<< x_ << " " << y_ << endl;
 	return false;
 }
-
 void Board::promotion(int x, int y)
 {
 	board[x][y] = FIELD(board[x][y] * 2);
 }
 
+void Board::unPromotion(int i, int j) {
+	board[i][j] = FIELD(board[i][j] / 2);
+}
+// Wymaga optymalizacji
+void Board::reverse(){
+	FIELD newBoard[8][8];
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 8; j++){
+			newBoard[i][j] = board[7 - i][7 - j];
+		}
+	}
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 8; j++) {
+			board[i][j] = (FIELD)(-1 * newBoard[i][j]);
+		}
+	}
+}
+
 void Board::Display() {
 	for (int i = 7; i >= 0; i--) {
 		for (int j = 0; j < 8; j++) {
-			if (board[j][i] == -2) cout << "W ";
-			if (board[j][i] == -1) cout << "w ";
 			if (board[j][i] == 0) cout << "  ";
-			if (board[j][i] == 1) cout << "b ";
-			if (board[j][i] == 2) cout << "B ";
+			else if (board[j][i] == -1) cout << "w ";
+			else if (board[j][i] == 1) cout << "b ";
+			else if (board[j][i] == 2) cout << "B ";
+			else if (board[j][i] == -2) cout << "W ";
 		}
 		cout << i << endl;
 	}
@@ -491,14 +510,14 @@ Board::Board() {
 Board::~Board() {
 }
 
-Board::Board(const Board & board){
-	for (size_t i = 0; i < 8; i++){
-		for (size_t j = 0; j < 8; j++){			
+Board::Board(const Board & board) {
+	for (size_t i = 0; i < 8; i++) {
+		for (size_t j = 0; j < 8; j++) {
 			this->board[i][j] = board.board[i][j];
 		}
 	}
 }
 
-FIELD Board::getField(int x, int y){
+FIELD Board::getField(int x, int y) {
 	return board[x][y];
 }

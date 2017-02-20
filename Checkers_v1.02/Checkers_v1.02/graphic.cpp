@@ -2,7 +2,7 @@
 
 
 Graphic::Graphic()
-	:AI(Board())
+	
 {
 	_WHITE_K.loadFromFile("black_field_w_k.bmp");
 	_WHITE.loadFromFile("black_field_w.bmp");

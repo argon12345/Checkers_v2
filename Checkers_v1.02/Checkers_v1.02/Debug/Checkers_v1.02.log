@@ -1,3 +1,15 @@
-﻿  AI.cpp
-  Checkers_v1.02.vcxproj -> D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\Debug\Checkers_v1.02.exe
-  Checkers_v1.02.vcxproj -> D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\Debug\Checkers_v1.02.pdb (Partial PDB)
+﻿  matlab.cpp
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\matlab.cpp : fatal error C1041: cannot open program database 'D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\Checkers_v1.02\Debug\vc140.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  main.cpp
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\main.cpp : fatal error C1041: cannot open program database 'D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\Checkers_v1.02\Debug\vc140.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  graphic.cpp
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\graphic.cpp : fatal error C1041: cannot open program database 'D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\Checkers_v1.02\Debug\vc140.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Game.cpp
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\game.cpp : fatal error C1041: cannot open program database 'D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\Checkers_v1.02\Debug\vc140.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Board.cpp
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\board.cpp : fatal error C1041: cannot open program database 'D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\Checkers_v1.02\Debug\vc140.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  AI_2.cpp
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\ai_2.cpp : fatal error C1041: cannot open program database 'D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\Checkers_v1.02\Debug\vc140.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  AI.cpp
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\ai.cpp : fatal error C1041: cannot open program database 'D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\Checkers_v1.02\Debug\vc140.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+  Generating Code...

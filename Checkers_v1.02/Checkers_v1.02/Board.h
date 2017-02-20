@@ -39,6 +39,12 @@ public:
 	// Awansowanie pionka na dame
 	void promotion(int, int);
 
+	// Degradacja damy na pionka
+	void unPromotion(int, int);
+
+	// Zamiana planszy
+	void reverse();
+
 	// Wyswietlenie planszy
 	void Display();
 

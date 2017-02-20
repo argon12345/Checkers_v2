@@ -1,0 +1,11 @@
+﻿  AI.cpp
+AI.cpp(52): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+AI.cpp(77): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+AI.cpp(83): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating code
+  1 of 454 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Checkers_v1.02.vcxproj -> D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\x64\Release\Checkers_v1.02.exe
+  Checkers_v1.02.vcxproj -> D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\x64\Release\Checkers_v1.02.pdb (Full PDB)
