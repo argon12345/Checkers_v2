@@ -89,7 +89,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Full</Optimization>
+      <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
@@ -104,7 +104,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
@@ -123,17 +123,19 @@
     <ClCompile Include="AI.cpp" />
     <ClCompile Include="AI_2.cpp" />
     <ClCompile Include="Board.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameCtrl.cpp" />
     <ClCompile Include="graphic.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matlab.cpp" />
+    <ClCompile Include="View.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AI.h" />
     <ClInclude Include="AI_2.h" />
     <ClInclude Include="Board.h" />
-    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameCtrl.h" />
     <ClInclude Include="graphic.h" />
+    <ClInclude Include="View.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

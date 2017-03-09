@@ -97,10 +97,12 @@ bool Board::checkMoveTo(int x, int y, int x_, int y_) {
 	FIELD var = board[x][y];
 	if (x >= 0 && y >= 0 && x_ >= 0 && y_ >= 0 && x < 8 && y < 8 && x_ < 8 && y_ < 8 && x != x_ && y != y_ && (abs(x - x_) == abs(y - y_))) {
 		if (var == WHITE) {
-			if (((y_ - y) == 1) && (abs(x - x_) == 1) && board[x_][y_] == EMPTY)
+			if (((y_ - y) == 1) && (abs(x - x_) == 1) && board[x_][y_] == EMPTY) {
 				return true;
-			if ((abs(y_ - y) == 2) && (abs(x - x_) == 2) && board[x_][y_] == EMPTY && (board[(x + x_) / 2][(y + y_) / 2] == BLACK || board[(x + x_) / 2][(y + y_) / 2] == BLACK_K))
+			}
+			if ((abs(y_ - y) == 2) && (abs(x - x_) == 2) && board[x_][y_] == EMPTY && (board[(x + x_) / 2][(y + y_) / 2] == BLACK || board[(x + x_) / 2][(y + y_) / 2] == BLACK_K)) {
 				return true;
+			}
 			return false;
 		}
 		else if (var == BLACK) {
@@ -328,8 +330,13 @@ bool Board::moveTo(int x, int y, int x_, int y_) {
 	//cout << "MoveTo: " << x << " " << y << " to " << x_ << " " << y_ << endl;
 	PLAYER player;
 	(board[x][y] < 0) ? player = P_WHITE : player = P_BLACK;
+
+
 	if (checkMoveTo(x, y, x_, y_)) {
 		//cout << "moveTo - etap 1" << endl;
+
+		 
+
 		if ((abs(board[x][y]) == 1) && (abs(x - x_) == 1) && !checkBeatings(player)) {
 			//cout << "moveTo - etap 2.1 " << endl;
 			board[x_][y_] = board[x][y];
@@ -340,6 +347,9 @@ bool Board::moveTo(int x, int y, int x_, int y_) {
 			}
 			return true;
 		}
+
+
+
 		if ((abs(x - x_) == 2) && abs(board[x][y]) == 1) {
 			//cout << "moveTo - etap 2.2 " << endl;
 			board[x_][y_] = board[x][y];
@@ -351,6 +361,10 @@ bool Board::moveTo(int x, int y, int x_, int y_) {
 			}
 			return true;
 		}
+
+
+
+		//Poruszanie siê dla damek
 		if (abs(board[x][y]) == 2 && (!checkBeatings(player))) {
 			//cout << "moveTo - etap 2.3.0 " << endl;
 			board[x_][y_] = board[x][y];

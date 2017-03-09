@@ -20,42 +20,50 @@ AI::AI(Board board)
 	cavity = 0;
 	player = P_WHITE;
 }
+
 AI::AI() {
 
 }
 
-vector <Coord> AI::getSolution(int cavity)
+vector <Coord> AI::getSolution(int cavity, PLAYER player)
 {
-	reverse();
-	cavity = 6;
+	if (player = P_BLACK) {
+		reverse();
+	}
 	clearMovements();
 	movements();
-	//system("CLS");
-	//cout << "getSolution: Mozliwe ruchy oraz tablica" << endl;
-	//displayCoord();
-	//Board::Display();
 
+
+	// Jeœli jest tylko jeden mozliwy ruch, zwraca natychmiast, pomijaj¹c przeszukiwanie.
 	if (_coord.size() == 1) {
 		displayCoord();
 		Board::Display();
+		for (int i = 0; i < _coord[0].size(); i++) {
+			_coord[0][i].reverse();
+		}
 		return _coord[0];
 	}
 
+	// Nadanie wartoœci, ka¿demu ruchowi.
 	for (auto & it : _coord) {
 		nodeValue.push_back(AI(*this).treeMinMax(it, cavity - 1));
 	}
+
+	// Znalezienie najlepiej punktowanego ruchu
 	int best = INT32_MIN;
 	int iBest = 0;
-	for (size_t i = 0; i < nodeValue.size(); i++) {
+	for (int i = 0; i < nodeValue.size(); i++) {
 		if (best < nodeValue[i]) {
 			best = nodeValue[i];
 			iBest = i;
 		}
 	}
-	//system("CLS");
+
+	// Wyœwietlenie wszystkich mo¿liwych ruchów
 	displayCoord();
 	Board::Display();
 
+	// W przypadku gdy kilka ruchów ma t¹ sam¹ maksymaln¹ wartoœæ, to tworzymy wektor najlepszych ruchów.
 	vector<vector<Coord>> bestResultCoord;
 	for (int i = 0; i < nodeValue.size(); i++) {
 		if (nodeValue[i] == best) {
@@ -63,23 +71,46 @@ vector <Coord> AI::getSolution(int cavity)
 		}
 	}
 
+	if (player = P_BLACK) {
+		reverse();
+	}
+
+	// Losowanie z puli najlepszych ruchow i zwrócenie ruchu
 	if (bestResultCoord.empty()) {
-		return _coord[0];
+		if (player == P_BLACK) {
+			for (int i = 0; i < _coord[0].size(); i++) {
+				_coord[0][i].reverse();
+			}
+			return _coord[0];
+		}
+		else {
+			return _coord[0];
+		}
+		
 	}
 	else {
-		return bestResultCoord[rand() % bestResultCoord.size()];
+		if (player == P_BLACK) {
+			for (int i = 0; i < bestResultCoord[0].size(); i++) {
+				bestResultCoord[0][i].reverse();
+			}
+			return bestResultCoord[0];
+		}
+		else {
+			return bestResultCoord[0];
+		}
+
 	}
 }
 void AI::movements() {
 	_coord.clear();
-	for (size_t i = 0; i < 8; i++) {
-		for (size_t j = 0; j < 8; j++) {
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 8; j++) {
 			movementWithBeatings(i, j, 0, vector <Coord>());
 		}
 	}
 	if (_coord.size() == 0) {
-		for (size_t i = 0; i < 8; i++) {
-			for (size_t j = 0; j < 8; j++) {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
 				movementWithoutBeatings(i, j, 0);
 			}
 		}
@@ -380,7 +411,7 @@ void AI::rating(PLAYER player) {
 			else {
 				if (Board::board[i][j] == player) {
 					white++;
-					up_W += j ;
+					up_W += j;
 					if (i < 7 && i > 0 && j > 0 && j < 7) {
 						zone_I_w++;
 					}
@@ -409,18 +440,19 @@ void AI::rating(PLAYER player) {
 	}
 
 	int result_W = 0, result_B = 0;
-	white_K *= 50;
-	black_K *= 50;
-	white *= 12;
-	black *= 12;
+	white_K *= 12 * white;
+	black_K *= 12 * white;
+	white *= 8;
+	black *= 8;
 	zone_I_w *= 2;
-	zone_II_w *= 3;
+	zone_II_w *= 2;
 	zone_I_b *= 2;
 	zone_II_b *= 2;
 
-	value = white + white_K + zone_I_w + zone_II_w - black - black_K - zone_I_b - zone_II_b + up_W - up_B;
+	result_W = white + white_K + zone_I_w + zone_II_w + up_W;
+	result_B = black + black_K + zone_I_b + zone_II_b + up_B;
 
-
+	value = result_W - result_B;
 }
 int AI::getValue() {
 	return value;
@@ -511,12 +543,6 @@ inline void AI::movementsWithBeatingsFromTo(int i, int j, int x, int y, int step
 }
 inline void AI::movementsWithBeatingsFromToQueen(int i, int j, int x, int y, int m, int n, int step, vector <Coord>  tempCoord) {
 	if (step == 0) {
-
-		// Tworzenie nowego wêz³a
-		//vector<Coord> temp2;
-		//temp2.push_back(Coord(i, j, x, y));
-		//_coord.push_back(temp2);
-
 		//Przemieszczanie pionka
 		Board::board[x][y] = Board::board[i][j];
 		FIELD temp = Board::board[m][n];
@@ -583,53 +609,48 @@ int AI::treeMinMax(vector<Coord>actCoord, int cavity) {
 	movements();
 	if (cavity > 0) {
 		nodeValue.clear();
+		//Rekurencyjne Tworzenie nowych wêz³ów
+		// Zwraca rozwi¹zanie z liœcia
 		for (auto &it : _coord) {
-			//AI::Board::Display();
 			nodeValue.push_back(AI(*this).treeMinMax(it, cavity - 1));
 		}
 
 		int best = 0;
 
-		if (cavity % 2 == 1) {
-			best = INT_MIN;
-			for (auto &it : nodeValue) {
-				if (best < it) {
-					best = it;
+		// cavity & 1    ->    cavity % 2 == 1
+		if (cavity & 1) {
+			if (!nodeValue.empty()) {
+				best = nodeValue[0];
+				for (auto &it : nodeValue) {
+					if (best < it) {
+						best = it;
+					}
 				}
-			}
-			if (best == INT_MIN) {
-				best *= -1;
-			}
-			else {
 				return best;
 			}
+			else {
+				return 1000000 - cavity;
+			}
+
 		}
 		else {
-			best = INT_MAX;
-			for (auto &it : nodeValue) {
-				if (best > it) {
-					best = it;
+			if (!nodeValue.empty()) {
+				best = nodeValue[0];
+				for (auto &it : nodeValue) {
+					if (best > it) {
+						best = it;
+					}
 				}
-			}
-			if (best == INT_MAX) {
-				best *= -1;
-			}
-			else {
 				return best;
 			}
+			else {
+				return -1000000 + cavity;
+			}
+
 		}
-
-
-		//for			(auto &it : nodeValue) {
-		//	//cout << "ruch: " << it << endl;
-		//}
-
-		//cout << "Best : " << best << endl;;
-		
 	}
 	else {
 		rating(P_WHITE);
-		//cout << "Rating : " << value << endl;
 		return value;
 	}
 

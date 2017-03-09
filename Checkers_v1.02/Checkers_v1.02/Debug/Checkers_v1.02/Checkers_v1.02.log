@@ -1,13 +1,17 @@
-﻿  AI.cpp
-d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\ai.cpp(45): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Compiling...
-  graphic.cpp
-d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\graphic.h(58): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
-  Compiling...
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppClean.targets(76,5): warning : Access to the path 'd:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\debug\checkers_v1.02.exe' is denied.
+  View.cpp
+  matlab.cpp
   main.cpp
-d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\graphic.h(58): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  graphic.cpp
+  GameCtrl.cpp
+  Board.cpp
+  AI_2.cpp
+  AI.cpp
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\ai.cpp(41): warning C4018: '<': signed/unsigned mismatch
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\ai.cpp(55): warning C4018: '<': signed/unsigned mismatch
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\ai.cpp(68): warning C4018: '<': signed/unsigned mismatch
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\ai.cpp(81): warning C4018: '<': signed/unsigned mismatch
+d:\onedrive\it\c++\semestr 2 - programowanie obiektowe\checkers_v2\checkers_v1.02\checkers_v1.02\ai.cpp(93): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   Checkers_v1.02.vcxproj -> D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\Debug\Checkers_v1.02.exe
   Checkers_v1.02.vcxproj -> D:\OneDrive\IT\C++\Semestr 2 - Programowanie obiektowe\Checkers_v2\Checkers_v1.02\Debug\Checkers_v1.02.pdb (Partial PDB)

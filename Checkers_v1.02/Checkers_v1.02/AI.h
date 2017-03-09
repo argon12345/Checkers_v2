@@ -4,7 +4,7 @@
 #include <ctime>
 #include <Windows.h>
 
-#define CAVITY 4
+#define CAVITY 6
 
 struct Coord {
 	int x, y, x_, y_;
@@ -13,6 +13,12 @@ struct Coord {
 		this->y = y;
 		this->x_ = x_;
 		this->y_ = y_;
+	}
+	void reverse() {
+		x = 7 - x;
+		y = 7 - y;
+		x_ = 7 - x_;
+		y_ = 7 - y_;
 	}
 };
 
@@ -24,7 +30,7 @@ public:
 	AI();
 
 	// Zwraca najlepszy mo¿liwy ruch
-	vector <Coord> getSolution(int);
+	vector <Coord> getSolution(int cavity, PLAYER player);
 
 	// Tworzenie wektora mo¿liwych ruchów
 	void movements();
@@ -51,7 +57,7 @@ public:
 private:
 	inline void movementsWithBeatingsFromTo(int i, int j, int x, int y, int step, vector <Coord>);
 	inline void movementsWithBeatingsFromToQueen(int i, int j, int x, int y, int m, int n, int step, vector <Coord>);
-	
+
 
 	// Przechowuje ocene sytuacji 
 	int value;
