@@ -86,7 +86,7 @@ vector <Coord> AI::getSolution(int cavity, PLAYER player)
 		else {
 			return _coord[0];
 		}
-		
+
 	}
 	else {
 		if (player == P_BLACK) {
@@ -233,6 +233,9 @@ void AI::movementWithBeatings(int i, int j, int step = 0, vector <Coord> & tempC
 				break;
 
 			}
+			else { // Je쐋i pinek nale퓓 do tego samego gracza, przerwanie przeszukiwania.
+				break;
+			}
 		}
 		for (int k = 1, l = 1; i - k > 0 && j + l < 7; k++, l++) {
 
@@ -259,6 +262,9 @@ void AI::movementWithBeatings(int i, int j, int step = 0, vector <Coord> & tempC
 						break;
 					}
 				}
+				break;
+			}
+			else { // Je쐋i pinek nale퓓 do tego samego gracza, przerwanie przeszukiwania.
 				break;
 			}
 		}
@@ -290,6 +296,9 @@ void AI::movementWithBeatings(int i, int j, int step = 0, vector <Coord> & tempC
 				}
 				break;
 			}
+			else { // Je쐋i pinek nale퓓 do tego samego gracza, przerwanie przeszukiwania.
+				break;
+			}
 		}
 		for (int k = 1, l = 1; i - k > 0 && j - l > 0; k++, l++) {
 
@@ -316,6 +325,9 @@ void AI::movementWithBeatings(int i, int j, int step = 0, vector <Coord> & tempC
 						break;
 					}
 				}
+				break;
+			}
+			else { // Je쐋i pinek nale퓓 do tego samego gracza, przerwanie przeszukiwania.
 				break;
 			}
 		}
